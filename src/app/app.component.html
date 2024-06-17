@@ -1,3 +1,46 @@
-<app-user />
+<!-- <app-user />
 
-<router-outlet />
+<router-outlet /> -->
+
+<!-- Angular 16 version -->
+<form (ngSubmit)="addTask()">
+  <h1>Lista de Tareas</h1>
+  <ul>
+    <li *ngFor="let task of tasksList; let i = index">
+      {{ task }}
+      <button type="button" (click)="removeTask(i)">Eliminar</button>
+    </li>
+  </ul>
+  <div class="input-container">
+    <input
+      type="text"
+      placeholder="Nueva tarea"
+      [(ngModel)]="newTask"
+      name="taskInput"
+      aria-label="Input for new task"
+    />
+    <button type="submit">Agregar Tarea</button>
+  </div>
+</form>
+
+<!-- Angular 17 version -->
+<!-- <div>
+  <h1>Lista de Tareas</h1>
+
+  <ul>
+    @for (task of tasksList; track task) {
+    <li>
+      <span>{{ task }}</span>
+      <button (click)="removeTask(task)">Eliminar</button>
+    </li>
+    }
+  </ul>
+
+  <input
+    type="text"
+    placeholder="Ingresa nueva tarea"
+    [(ngModel)]="newTask"
+    aria-label="Input for new task"
+  />
+  <button (click)="addTask()">Agregar</button>
+</div> -->
