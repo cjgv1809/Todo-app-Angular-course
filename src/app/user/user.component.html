@@ -1,0 +1,47 @@
+<section>
+  @if (isLoggedIn) {
+  <div class="container">
+    <div class="row">
+      <div>
+        <h1>Welcome, {{ username }}</h1>
+        <img
+          src="https://github.com/cjgv1809.png"
+          alt="{{ username }}"
+          (click)="greetUser()"
+        />
+      </div>
+    </div>
+  </div>
+  } @else {
+  <div class="container">
+    <div class="row">
+      <div>
+        <h1>You are not logged in</h1>
+        <p>Please log in to see your profile</p>
+        <button (click)="isLoggedIn = true">Log in</button>
+      </div>
+    </div>
+  </div>
+  }
+  <app-games
+    (addFavoriteEvent)="getFavoriteGame($event)"
+    username="{{ username }}"
+  />
+
+  @if (favGame !== '') {
+  <div class="container">
+    <div class="row">
+      <div>
+        <h3>Your favorite game is {{ favGame }}</h3>
+      </div>
+    </div>
+  </div>
+  } @defer (on viewport){
+
+  <app-comments />
+  } @placeholder {
+  <div>.</div>
+  } @loading {
+  <div>Loading...</div>
+  }
+</section>
